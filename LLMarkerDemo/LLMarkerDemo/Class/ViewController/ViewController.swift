@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  GrowingIODemo
+//  LLMarkerDemo
 //
 //  Created by lixingle on 2017/3/22.
 //  Copyright © 2017年 com.lvesli. All rights reserved.
@@ -23,7 +23,8 @@ class ViewController: UIViewController,UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        //圈选view
+        LLMarkerChooseView.sharedInstance().addToWindow()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapLabel))
         lblTop.isUserInteractionEnabled = true
@@ -46,18 +47,16 @@ class ViewController: UIViewController,UITextFieldDelegate {
         SDWebImageManager.shared().imageCache?.clearMemory()
         SDWebImageManager.shared().imageCache?.clearDisk(onCompletion: nil)
         
-        let url = URL(string: "https://dn-jm-public.qbox.me/94264e87-4fac-48cc-bfe6-9d1fdd786214")
+        let url = URL(string: "https://drscdn.500px.org/photo/228687165/q%3D50_w%3D140_h%3D140/v2?client_application_id=27875&webp=true&v=0&sig=cba698b00ca42283f2e44b75b3f4f268c46f9c7f659d3d27e062045cc9009b20")
         imageView.sd_setImage(with: url)
     }
 
     
     func tapLabel() {
-        //http://jmbx-miracle-app.qa-02.jimu.com/appVersion/update/check?caller=14&appId=5&versionCode=8013301
-        // http://jmbx-miracle-app.qa-02.jimu.com/loan/apply/v2/dict?caller=14
         
         
         //1.0
-        Alamofire.request("http://jmbx-miracle-app.qa-02.jimu.com/loan/apply/v2/dict?caller=14",method:.post,parameters: ["testKey":"123","username":"lves"]).responseJSON { response in
+        Alamofire.request("https://api.500px.com/v1/photos?page=1&rpp=20&feature=popular&include_store=store_download&include_states=votes&consumer_key=zWez4W3tU1uXHH0S5zAVYX0xAh6sm0kpIZpyF1K7",method:.post,parameters: ["testKey":"123","username":"lves"]).responseJSON { response in
 //           print("123")
             
         }

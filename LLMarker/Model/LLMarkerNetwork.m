@@ -1,8 +1,8 @@
 //
 //  LLMarkerNetwork.m
-//  GrowingIODemo
+//  LLMarkerDemo
 //
-//  Created by Pintec on 13/4/17.
+//  Created by lixingle on 13/4/17.
 //  Copyright © 2017年 com.lvesli. All rights reserved.
 //
 
