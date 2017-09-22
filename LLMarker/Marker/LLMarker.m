@@ -274,10 +274,13 @@ int getThreadsCount()
 #pragma mark - GuestRecoginzer
 
 - (void) ll_markerGuestRecoginzer:(UIGestureRecognizer *)guestRecoginzer action:(SEL)action target:(id)target{
+    
+    NSInteger tag = guestRecoginzer.view.tag;
+    NSString *frameStr = NSStringFromCGRect(guestRecoginzer.view.frame);
+    NSString *path = [guestRecoginzer.view ll_markerViewPath];
     __weak typeof(self) weakSelf=self;
     dispatch_async(self.ll_queue, ^{
         //NSLog(@"count %d %@",getThreadsCount(),[NSThread currentThread]);
-        NSString *path = [guestRecoginzer.view ll_markerViewPath];
         LLMarkerLog(path)
         NSString *title = @"";
         if ([guestRecoginzer.view isKindOfClass:[UILabel class]]) {
@@ -289,8 +292,8 @@ int getThreadsCount()
                                                                path:path
                                                              action:NSStringFromSelector(action)
                                                              target:[target ll_markerClassName]
-                                                                tag:guestRecoginzer.view.tag
-                                                              frame:NSStringFromCGRect(guestRecoginzer.view.frame)
+                                                                tag:tag
+                                                              frame:frameStr
                                                               appId:weakSelf.appId
                                                          createTime:[[NSDate date] timeIntervalSince1970]
                                                              userId:weakSelf.userId
@@ -303,12 +306,13 @@ int getThreadsCount()
     NSString *path = [textField ll_markerViewPath];
     NSString *frameStr = NSStringFromCGRect(textField.frame);
     NSInteger tag = textField.tag;
+    NSString *text = textField.text;
     __weak typeof(self) weakSelf=self;
     dispatch_async(self.ll_queue, ^{
         //NSLog(@"count %d %@",getThreadsCount(),[NSThread currentThread]);
         LLMarkerLog(path);
         LLMarkerControl *control = [LLMarkerControl controlWithName:[textField ll_markerClassName]
-                                                              title:textField.text
+                                                              title:text
                                                                path:path
                                                              action:@"textFieldDidEndEditing:"
                                                              target:[delegate ll_markerClassName]
