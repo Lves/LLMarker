@@ -300,8 +300,9 @@ int getThreadsCount()
 }
 #pragma mark - UITexField delegate
 -(void) ll_markerTextFieldDidEndEditing:(UITextField *)textField delegate:(id)delegate{
-    
-   NSString *path = [textField ll_markerViewPath];
+    NSString *path = [textField ll_markerViewPath];
+    NSString *frameStr = NSStringFromCGRect(textField.frame);
+    NSInteger tag = textField.tag;
     __weak typeof(self) weakSelf=self;
     dispatch_async(self.ll_queue, ^{
         //NSLog(@"count %d %@",getThreadsCount(),[NSThread currentThread]);
@@ -311,8 +312,8 @@ int getThreadsCount()
                                                                path:path
                                                              action:@"textFieldDidEndEditing:"
                                                              target:[delegate ll_markerClassName]
-                                                                tag:textField.tag
-                                                              frame:NSStringFromCGRect(textField.frame)
+                                                                tag:tag
+                                                              frame:frameStr
                                                               appId:weakSelf.appId
                                                          createTime:[[NSDate date] timeIntervalSince1970]
                                                              userId:weakSelf.userId
