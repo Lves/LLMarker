@@ -33,9 +33,9 @@
 }
 
 void ll_markerTableViewDidSelectRowAtIndexPath(id self , SEL _cmd ,id tableView ,id indexPath){
+    [[LLMarker sharedInstance] ll_markerTableView:tableView didSelctedIndexPath:indexPath target:self];
      SEL selector = NSSelectorFromString(@"ll_markerTableViewDidSelectRowAtIndexPath");
      ((void(*)(id, SEL, id, id))objc_msgSend)(self,selector,tableView,indexPath);
-    [[LLMarker sharedInstance] ll_markerTableView:tableView didSelctedIndexPath:indexPath target:self];
 }
 void ll_markerDefaultTableViewDidSelectRowAtIndexPath(id self , SEL _cmd ,id tableView ,id indexPath){
     

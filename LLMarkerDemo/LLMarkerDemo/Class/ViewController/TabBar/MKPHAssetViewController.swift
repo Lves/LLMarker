@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MKPHAssetViewController: UITableViewController {
+class MKPHAssetViewController: BaseTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,6 +16,6 @@ class MKPHAssetViewController: UITableViewController {
         
     }
 
-
+    
 
 }

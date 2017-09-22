@@ -31,6 +31,7 @@
 		6C5C9BB11F7127D800B4EEC5 /* NSString+LLMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C5C9B971F7127D800B4EEC5 /* NSString+LLMarker.m */; };
 		6C5C9BB21F7127D800B4EEC5 /* UIApplication+LLMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C5C9B991F7127D800B4EEC5 /* UIApplication+LLMarker.m */; };
 		6C5C9BB31F7127D800B4EEC5 /* UIView+LLMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C5C9B9B1F7127D800B4EEC5 /* UIView+LLMarker.m */; };
+		6CB658551F7528860023CA44 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB658541F7528860023CA44 /* BaseTableViewController.swift */; };
 		6CBE7BA81F7122DF00FBEBB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBE7BA71F7122DF00FBEBB2 /* AppDelegate.swift */; };
 		6CBE7BAD1F7122DF00FBEBB2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CBE7BAB1F7122DF00FBEBB2 /* Main.storyboard */; };
 		6CBE7BAF1F7122DF00FBEBB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6CBE7BAE1F7122DF00FBEBB2 /* Assets.xcassets */; };
@@ -100,6 +101,7 @@
 		6C5C9B991F7127D800B4EEC5 /* UIApplication+LLMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+LLMarker.m"; sourceTree = "<group>"; };
 		6C5C9B9A1F7127D800B4EEC5 /* UIView+LLMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LLMarker.h"; sourceTree = "<group>"; };
 		6C5C9B9B1F7127D800B4EEC5 /* UIView+LLMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LLMarker.m"; sourceTree = "<group>"; };
+		6CB658541F7528860023CA44 /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		6CBE7BA41F7122DF00FBEBB2 /* LLMarkerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LLMarkerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CBE7BA71F7122DF00FBEBB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6CBE7BAC1F7122DF00FBEBB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -290,40 +292,25 @@
 		6CBE7C531F71250100FBEBB2 /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				6CBE7C541F71250100FBEBB2 /* Cell */,
+				6CBE7C561F71250100FBEBB2 /* AFNetManager.swift */,
 				6CBE7C551F71250100FBEBB2 /* ViewController */,
 			);
 			path = Class;
 			sourceTree = "<group>";
 		};
-		6CBE7C541F71250100FBEBB2 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
 		6CBE7C551F71250100FBEBB2 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				6CBE7C561F71250100FBEBB2 /* AFNetManager.swift */,
-				6CBE7C571F71250100FBEBB2 /* AViewController.swift */,
-				6CBE7C581F71250100FBEBB2 /* BViewController.swift */,
-				6CBE7C591F71250100FBEBB2 /* Cell */,
-				6CBE7C5A1F71250100FBEBB2 /* MyCollectionViewController.swift */,
-				6CBE7C5B1F71250100FBEBB2 /* MyTableViewController.swift */,
 				6CBE7C5C1F71250100FBEBB2 /* TabBar */,
 				6CBE7C631F71250100FBEBB2 /* ViewController.swift */,
+				6CBE7C571F71250100FBEBB2 /* AViewController.swift */,
+				6CBE7C581F71250100FBEBB2 /* BViewController.swift */,
+				6CBE7C5A1F71250100FBEBB2 /* MyCollectionViewController.swift */,
+				6CBE7C5B1F71250100FBEBB2 /* MyTableViewController.swift */,
 				6CBE7C641F71250100FBEBB2 /* WebViewController.swift */,
+				6CB658541F7528860023CA44 /* BaseTableViewController.swift */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		6CBE7C591F71250100FBEBB2 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		6CBE7C5C1F71250100FBEBB2 /* TabBar */ = {
@@ -479,6 +466,7 @@
 				6C5C9BA91F7127D800B4EEC5 /* LLMarkerCrashLog.m in Sources */,
 				6CBE7C6C1F71250100FBEBB2 /* MKOrderTableViewCell.swift in Sources */,
 				6C5C9BA51F7127D800B4EEC5 /* UITextField+LLMarker.m in Sources */,
+				6CB658551F7528860023CA44 /* BaseTableViewController.swift in Sources */,
 				6CBE7C681F71250100FBEBB2 /* MyCollectionViewController.swift in Sources */,
 				6C5C9BAD1F7127D800B4EEC5 /* LLMarkerURLProtocol.m in Sources */,
 				6C5C9BA01F7127D800B4EEC5 /* UIAlertAction+LLMarker.m in Sources */,

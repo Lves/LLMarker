@@ -46,13 +46,13 @@ class MyTableViewController: UITableViewController {
     
     
     // MARK: -  delegate
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
 //        print("%@","父类方法");
 //        
 ////        let tabBVc = TabBViewController()
 ////        self.navigationController?.pushViewController(tabBVc, animated: true)
-//    }
+    }
     
    
     // MARK: - Table view data source

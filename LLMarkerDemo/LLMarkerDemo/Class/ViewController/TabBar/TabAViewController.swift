@@ -43,12 +43,12 @@ class TabAViewController: MyTableViewController {
     }
 
     // MARK: -  delegate
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-////        super.tableView(tableView, didSelectRowAt: indexPath)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        super.tableView(tableView, didSelectRowAt: indexPath)
 ////        let model = self.data?[indexPath.row] ?? MKOrderViewModel()
 ////        model.isSelect = !model.isSelect
 ////        tableView.reloadRows(at: [indexPath], with: .fade)
-//    }
+    }
     //在编辑状态，可以拖动设置cell位置
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true

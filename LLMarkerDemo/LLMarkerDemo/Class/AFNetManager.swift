@@ -26,9 +26,10 @@ class AFNetManager: NSObject {
         
         manager.dataTask(with: mutableRequest as URLRequest) { (response, responseObject, error) in
             if error == nil {
-                print("\(response) \(responseObject)")
+                print("\(response) \(responseObject ?? "")")
             }else {
                 print(" \(error)")
+                
             }
             
         }.resume()
