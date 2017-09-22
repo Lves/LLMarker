@@ -58,7 +58,13 @@
 -(NSString *)ll_markerViewIndex{
     if ([self isKindOfClass:[UITableViewCell class]]) {
         UITableViewCell *cell = (UITableViewCell *)self;
-        UITableView *tableView = (UITableView *) [[cell superview] superview];
+        UITableView *tableView = nil;
+        UIView *firstSuperView = [cell superview];
+        if ([firstSuperView isKindOfClass:[UITableView class]]){
+             tableView = (UITableView *) firstSuperView;
+        }else if ( [[firstSuperView superview] isKindOfClass:[UITableView class]]){
+             tableView = (UITableView *) [firstSuperView superview];
+        }
         NSIndexPath *indexPath = [tableView indexPathForCell:cell];
         return [NSString stringWithFormat:@"%ld:%ld",indexPath.section,indexPath.row];
     }else if ([self isKindOfClass:[UICollectionViewCell class]]){

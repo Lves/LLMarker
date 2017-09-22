@@ -157,34 +157,35 @@ int getThreadsCount()
 
 #pragma mark - Action
 -(void)ll_markerView:(UIView *)view action:(SEL)action target:(id)target{
+    //NSLog(@"count %d %@",getThreadsCount(),[NSThread currentThread]);
+    NSString *title = @"";
+    if ([view isKindOfClass:[UIButton class]]) {
+        title = [(UIButton *)view titleLabel].text;
+    }else if ([view isKindOfClass:NSClassFromString(@"UITabBarButton")]){
+        UILabel *lable = [view getPrivateProperty:@"label"];
+        title = lable.text;
+        /***
+         * UITabBarButton 会进来3次，action分别是:_buttonDown:、_sendAction:withEvent:、_buttonUp:
+         * 这里只收录 _sendAction:withEvent:
+         */
+        if (![NSStringFromSelector(action) isEqualToString:@"_sendAction:withEvent:"]) {
+            return;
+        }
+        
+    }
+    NSInteger tag = view.tag;
+    NSString *frameStr = NSStringFromCGRect(view.frame);
+     NSString *path = [view ll_markerViewPath];
     __weak typeof(self) weakSelf=self;
     dispatch_async(self.ll_queue, ^{
-        //NSLog(@"count %d %@",getThreadsCount(),[NSThread currentThread]);
-        NSString *title = @"";
-        if ([view isKindOfClass:[UIButton class]]) {
-            title = [(UIButton *)view titleLabel].text;
-        }else if ([view isKindOfClass:NSClassFromString(@"UITabBarButton")]){
-            UILabel *lable = [view getPrivateProperty:@"label"];
-            title = lable.text;
-            /***
-             * UITabBarButton 会进来3次，action分别是:_buttonDown:、_sendAction:withEvent:、_buttonUp:
-             * 这里只收录 _sendAction:withEvent:
-             */
-            if (![NSStringFromSelector(action) isEqualToString:@"_sendAction:withEvent:"]) {
-                return;
-            }
-            
-        }
-        NSString *path = [view ll_markerViewPath];
         LLMarkerLog(path)
-        
         LLMarkerControl *control = [LLMarkerControl controlWithName:[view ll_markerClassName]
                                    title:title
                                     path:path
                                   action:NSStringFromSelector(action)
                                   target:[target ll_markerClassName]
-                                     tag:view.tag
-                                   frame:NSStringFromCGRect(view.frame)
+                                     tag:tag
+                                   frame:frameStr
                                    appId:weakSelf.appId
                               createTime:[[NSDate date] timeIntervalSince1970]
                                   userId:weakSelf.userId
@@ -199,18 +200,22 @@ int getThreadsCount()
 - (void) ll_markerTableView:(UITableView *)tableView didSelctedIndexPath:(NSIndexPath *)indexPath target:(id)target{
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     NSString *title = cell.textLabel.text;
+    NSString *path = [cell ll_markerViewPath];
+    NSInteger tag = cell.tag;
+    NSString *frameStr = NSStringFromCGRect(cell.frame);
+    
     __weak typeof(self) weakSelf=self;
     dispatch_async(self.ll_queue, ^{
         //NSLog(@"count %d %@",getThreadsCount(),[NSThread currentThread]);
-        NSString *path = [cell ll_markerViewPath];
+        
         LLMarkerLog(path);
         LLMarkerControl *control = [LLMarkerControl controlWithName:[cell ll_markerClassName]
                                                               title:title
                                                                path:path
                                                              action:@"tableView:didSelectRowAtIndexPath:"
                                                              target:[target ll_markerClassName]
-                                                                tag:cell.tag
-                                                              frame:NSStringFromCGRect(cell.frame)
+                                                                tag:tag
+                                                              frame:frameStr
                                                               appId:weakSelf.appId
                                                          createTime:[[NSDate date] timeIntervalSince1970]
                                                              userId:weakSelf.userId
@@ -221,10 +226,11 @@ int getThreadsCount()
 #pragma mark -  CollectionCell selected
 - (void) ll_markerCollectionView:(UICollectionView *)collectionView didSelctedIndexPath:(NSIndexPath *)indexPath target:(id)target{
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    NSString *path = [cell ll_markerViewPath];
     __weak typeof(self) weakSelf=self;
     dispatch_async(self.ll_queue, ^{
         //NSLog(@"count %d %@",getThreadsCount(),[NSThread currentThread]);
-        NSString *path = [cell ll_markerViewPath];
+        
         LLMarkerLog(path)
         LLMarkerControl *control = [LLMarkerControl controlWithName:[cell ll_markerClassName]
                                                               title:@""
@@ -295,11 +301,10 @@ int getThreadsCount()
 #pragma mark - UITexField delegate
 -(void) ll_markerTextFieldDidEndEditing:(UITextField *)textField delegate:(id)delegate{
     
-   
+   NSString *path = [textField ll_markerViewPath];
     __weak typeof(self) weakSelf=self;
     dispatch_async(self.ll_queue, ^{
         //NSLog(@"count %d %@",getThreadsCount(),[NSThread currentThread]);
-        NSString *path = [textField ll_markerViewPath];
         LLMarkerLog(path);
         LLMarkerControl *control = [LLMarkerControl controlWithName:[textField ll_markerClassName]
                                                               title:textField.text
